@@ -1,13 +1,12 @@
 import React from 'react';
 import CustomRow from "../customrow/custom-row";
-import classes from "./todo-list.css"
 
-const TodoList = (props) => {
+const TodoList = ({className, ...props}) => {
 
     return (
         <div>
             <table>
-                <thead className={classes.header2}>
+                <thead className={className}>
                 <tr>
                     <th>Номер</th>
                     <th>Задача</th>
@@ -16,7 +15,7 @@ const TodoList = (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                    {props.todoList.map((todo, index) => <CustomRow key={todo.id} todo={todo} index={index}/>)}
+                {props.todoList.map((todo, index) => <CustomRow key={todo.id} todo={todo} index={index}/>)}
                 </tbody>
             </table>
         </div>

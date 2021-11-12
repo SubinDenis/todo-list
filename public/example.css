@@ -1,0 +1,47 @@
+.flex-box {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.top-panel {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.left-panel {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.right-panel {
+    background-color: rgba(10, 80, 40, 0.3);
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 2vw;
+    top: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bottom-panel {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+tr {
+    height: 60px;
+}
+
+table, tr, td {
+    border: 2px solid red ;
+}
+
+table {
+    width: 100%
+}
+
+.row-buttons {
+    display: flex;
+    width: 100%;
+}

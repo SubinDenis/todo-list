@@ -4,6 +4,7 @@ import Footer from "./components/footer/footer";
 import {useState} from "react";
 import AddTodo from "./components/addtodo/add-todo";
 import Modal from "./components/modal/modal";
+import styles from "./App.Module.css";
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
     }
 
     return (
-        <div>
+        <div className={styles.mainWindow}>
             <Header/>
             <button onClick={() => setModalActivity(true)}>Добавить заметку</button>
             <Modal active={modalActivity} setActive={setModalActivity}>
