@@ -8,6 +8,8 @@ import styles from "./App.Module.css";
 
 function App() {
 
+    const [modalActivity, setModalActivity] = useState(false);
+
     const [todoList, setTodoList] = useState([
         {
             id: 1,
@@ -15,7 +17,7 @@ function App() {
             description: 'ты должен сделать это',
             createdAt: new Date().toLocaleString(),
             deadlineAt: new Date(2021, 11, 15).toLocaleString(),
-            finishedAt: null,
+            finishedAt: '',
             updatedAt: new Date().toLocaleString()
         },
         {
@@ -29,23 +31,34 @@ function App() {
         }
     ]);
 
-    const [modalActivity, setModalActivity] = useState(false);
-
-
-    const addTodo = (todo) => {
-        setTodoList([...todoList, todo]);
+    const addTodo = (i) => {
+        let item = {...i};
+        setTodoList([...todoList, item]);
         setModalActivity(false);
+    };
+
+    const editTodo = (newTodo, index) => {
+        let todo = {...todoList[index], ...newTodo};
+        let newList = todoList.slice();
+        newList[index] = todo;
+        setTodoList(newList);
+    };
+
+    const deleteTodo = (index) => {
+        let newList = todoList.slice();
+        newList.splice(index, 1)
+        setTodoList(newList);
     }
 
     return (
         <div className={styles.mainWindow}>
             <Header/>
             <button onClick={() => setModalActivity(true)}>Добавить заметку</button>
-            <Modal active={modalActivity} setActive={setModalActivity}>
+            <TodoList todoList={todoList} onEdit={editTodo} onDelete={deleteTodo}/>
+            <Footer/>
+            <Modal active={modalActivity}>
                 <AddTodo onAdd={addTodo}/>
             </Modal>
-            <TodoList todoList={todoList}/>
-            <Footer/>
         </div>
     );
 }

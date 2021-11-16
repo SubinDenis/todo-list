@@ -1,21 +1,30 @@
 import React from 'react';
 import CustomRow from "../customrow/custom-row";
 
-const TodoList = ({className, ...props}) => {
+const TodoList = ({todoList, onEdit, onDelete}) => {
+
+    if (todoList.length === 0) {
+        return (
+            <strong>List is empty!</strong>
+        );
+    }
 
     return (
         <div>
             <table>
-                <thead className={className}>
+                <thead>
                 <tr>
                     <th>Номер</th>
                     <th>Задача</th>
                     <th>Дата создания</th>
                     <th>Выполнить до</th>
+                    <th/>
+                    <th/>
+                    <th/>
                 </tr>
                 </thead>
                 <tbody>
-                {props.todoList.map((todo, index) => <CustomRow key={todo.id} todo={todo} index={index}/>)}
+                {todoList.map((todo, index) => <CustomRow onEdit={onEdit} key={todo.id} todo={todo} index={index} onDelete={onDelete}/>)}
                 </tbody>
             </table>
         </div>

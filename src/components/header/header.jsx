@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const Header = ({className}) => {
+const Header = () => {
     return (
-        <div className={className}>
+        <div>
             <strong>Приложение для ведения списка дел</strong>
         </div>
     );
